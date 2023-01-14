@@ -153,8 +153,8 @@ class _AuthPageState extends State<NicknameEdit> {
                                     headers: {"Content-Type": "application/json"},
                                     body: body
                                 );
-                                print(res.body);
-                                print(widget.idx);
+                                // print(res.body);
+                                // print(widget.idx);
 
                                 Navigator.push(
                                     context,

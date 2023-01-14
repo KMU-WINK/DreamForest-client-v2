@@ -131,6 +131,7 @@ class _AuthPageState extends State<PasswordCheck> {
                     padding:
                     EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
+                      obscureText: true,
                       keyboardType: TextInputType.emailAddress,
                       style: TextStyle(fontSize: 18),
                       decoration: InputDecoration(

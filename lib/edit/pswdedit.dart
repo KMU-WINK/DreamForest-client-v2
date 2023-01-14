@@ -18,6 +18,40 @@ class PasswordEdit extends StatefulWidget {
 
 class _AuthPageState extends State<PasswordEdit> {
   String input_password = "";
+  String confirm_password = "";
+
+  void FlutterDialog() {
+    showDialog(
+        context: context,
+        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "비밀번호가 일치하지 않습니다.",
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text(
+                  "확인",
+                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +63,7 @@ class _AuthPageState extends State<PasswordEdit> {
         body: ListView(
           children: <Widget>[
             Container(
-              height: 320,
+              height: 400,
               decoration: BoxDecoration(
                   boxShadow: [
                     new BoxShadow(
@@ -100,6 +134,7 @@ class _AuthPageState extends State<PasswordEdit> {
                     padding:
                     EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
+                      obscureText: true,
                       keyboardType: TextInputType.emailAddress,
                       style: TextStyle(fontSize: 18),
                       decoration: InputDecoration(
@@ -114,6 +149,29 @@ class _AuthPageState extends State<PasswordEdit> {
                       onChanged: (text) {
                         setState(() {
                           input_password = text;
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                    child: TextField(
+                      obscureText: true,
+                      keyboardType: TextInputType.emailAddress,
+                      style: TextStyle(fontSize: 18),
+                      decoration: InputDecoration(
+                        hintText: 'Confirm Password',
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(color: Colors.grey)),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(color: Colors.grey)),
+                      ),
+                      onChanged: (text) {
+                        setState(() {
+                          confirm_password = text;
                         });
                       },
                     ),
@@ -144,18 +202,22 @@ class _AuthPageState extends State<PasswordEdit> {
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () async {
-                                final url = Uri.parse("http://13.124.141.14:8080/user/update/${widget.idx}");
+                                if (input_password == confirm_password) {
+                                  final url = Uri.parse("http://13.124.141.14:8080/user/update/${widget.idx}");
 
-                                Map data={"email": widget.id, "name": "d", "nickname": widget.nickname, "password": input_password};
-                                var body = json.encode(data);
-                                http.Response res = await http.put(
-                                    url,
-                                    headers: {"Content-Type": "application/json"},
-                                    body: body
-                                );
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => Profile(widget.nickname, widget.id, input_password, widget.idx)));
+                                  Map data={"email": widget.id, "name": "d", "nickname": widget.nickname, "password": input_password};
+                                  var body = json.encode(data);
+                                  http.Response res = await http.put(
+                                      url,
+                                      headers: {"Content-Type": "application/json"},
+                                      body: body
+                                  );
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Profile(widget.nickname, widget.id, input_password, widget.idx)));
+                                } else {
+                                  FlutterDialog();
+                                }
                               },
                               icon: Icon(Icons.done),
                             ),
