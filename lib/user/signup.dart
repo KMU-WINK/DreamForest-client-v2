@@ -29,7 +29,7 @@ class _AuthPageState extends State<SignUpPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "회원가입에 성공했습니다.",
+                  "회원가입에 성공했습니다. \n로그인 후 사용할 수 있습니다.",
                 ),
               ],
             ),
@@ -309,17 +309,17 @@ class _AuthPageState extends State<SignUpPage> {
                                   // print(res1.body.split('"'));
                                   var id_idx = res.body.split('"')[2];
                                   String idx = id_idx[1];
-                                  print(idx);
+                                  // print(idx);
                                   if (res.statusCode == 400) {
                                     FlutterDialog();
-                                    print("여기?");
+                                    // print("여기?");
                                   } else if (id == "" || nickname == "" || password == "" ) {
                                     SignupDialog();
-                                    print("빈칸");
+                                    // print("빈칸");
                                   }
                                   else {
                                     CompleteDialog();
-                                    print("성공");
+                                    // print("성공");
                                     // Navigator.push(
                                     //     context,
                                     //     MaterialPageRoute(builder: (context) =>
@@ -329,7 +329,7 @@ class _AuthPageState extends State<SignUpPage> {
                                 } catch (e) {
                                   if (id == "" || nickname == "" || password == "") {
                                       SignupDialog();
-                                      print("asdf");
+                                      // print("asdf");
                                   } else FlutterDialog();
                                 }
                               },

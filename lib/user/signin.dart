@@ -242,7 +242,7 @@ class _AuthPageState extends State<SignInPage> {
                                   );
                                   var token = res.body.split('"')[3];
                                   // print(token);
-                                  print(res.body.split('"'));
+                                  // print(res.body.split('"'));
                                   final url1 = Uri.parse("http://13.124.141.14:8080/user/info");
                                   Map data1 = {"token":res.body.split('"')[3]};
                                   var body1 = json.encode(data1);
@@ -251,11 +251,11 @@ class _AuthPageState extends State<SignInPage> {
                                       headers: {"Content-Type": "application/json"},
                                       body: body1
                                   );
-                                  print(res1.body.split('"'));
+                                  // print(res1.body.split('"'));
                                   nickname = res1.body.split('"')[13];
                                   String id_idx = res1.body.split('"')[2];
                                   String idx = id_idx.substring(1, id_idx.indexOf(','));
-                                  print(idx);
+                                  // print(idx);
 
 
                                   if (token == 'user not found!') {
@@ -266,16 +266,22 @@ class _AuthPageState extends State<SignInPage> {
                                         MaterialPageRoute(builder: (context) => Profile(nickname, id, password, idx)));
                                   } else if (id == "" || password == "") {
                                     SigninDialog();
-                                    print("임너라");
+                                    // print("임너라");
                                   }
                                   else {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(builder: (context) => Profile(nickname, id, password, idx)));
-                                    print("맞음");
+                                    // print("맞음");
                                   }
                                 } catch(e) {
-                                  FlutterDialog();
+                                  if (id == "" || password == "") {
+                                    SigninDialog();
+                                    // print("임너라");
+                                  } else {
+                                    // print("catch");
+                                    FlutterDialog();
+                                  }
                                 }
                               },
                               icon: Icon(Icons.arrow_forward),

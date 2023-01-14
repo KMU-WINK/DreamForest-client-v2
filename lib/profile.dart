@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dreamforest/edit/logout.dart';
 import 'package:dreamforest/edit/nicknameedit.dart';
 import 'package:dreamforest/edit/pswdcheck.dart';
 import 'package:dreamforest/mainscreen.dart';
