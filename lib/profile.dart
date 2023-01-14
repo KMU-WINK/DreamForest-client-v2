@@ -33,7 +33,7 @@ class _AuthPageState extends State<Profile> {
         body: ListView(
           children: <Widget>[
             Container(
-              height: 230,
+              height: 270,
               decoration: BoxDecoration(
                   boxShadow: [
                     new BoxShadow(
@@ -84,6 +84,33 @@ class _AuthPageState extends State<Profile> {
                       ),
                     ],
                   ),
+                  Container(
+                    margin: EdgeInsets.only(left: 16, top: 8, right: 16),
+                    child: Text(
+                      'ID',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 16, top: 8),
+                    child: Text(
+                      '${widget.id}',
+                      style:
+                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 16, top: 8, right: 16),
+                    child: Text(''),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 16, top: 8),
+                    child: Text(
+                      'NickName',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -95,30 +122,7 @@ class _AuthPageState extends State<Profile> {
                           TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: IconButton(onPressed: () {
-                          Navigator.push((context),
-                              MaterialPageRoute(builder: (context) => NicknameEdit()));
-                        }, icon: Icon(Icons.create)),
-                      )
                     ],
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 16, top: 8),
-                    child: Text(
-                      '',
-                      style: TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.normal),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 16, top: 8),
-                    child: Text(
-                      '${widget.id}',
-                      style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    ),
                   ),
                 ],
               ),
@@ -129,13 +133,26 @@ class _AuthPageState extends State<Profile> {
                 children: [
                   Row(
                     children: [
+                      Icon(Icons.create),
+                      Padding(padding:
+                      EdgeInsets.fromLTRB(16, 8, 16, 8),
+                        child: TextButton(onPressed: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => NicknameEdit(widget.nickname, widget.id, widget.password, widget.idx)));
+                        }, child: Text('Change Nickname',
+                          style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),)),),
+                    ],
+                  ),
+                  Row(
+                    children: [
                       Icon(Icons.lock),
                       Padding(padding:
                       EdgeInsets.fromLTRB(16, 8, 16, 8),
                       child: TextButton(onPressed: (){
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => PasswordCheck(widget.password)));
+                            MaterialPageRoute(builder: (context) => PasswordCheck(widget.nickname, widget.id, widget.password, widget.idx)));
                       }, child: Text('Change Password',
                             style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),)),),
                     ],

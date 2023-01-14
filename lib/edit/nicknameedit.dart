@@ -1,7 +1,15 @@
 import 'package:dreamforest/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class NicknameEdit extends StatefulWidget {
+  String nickname = "";
+  String id = "";
+  String password = "";
+  String idx = "";
+  NicknameEdit(this.nickname, this.id, this.password, this.idx);
+
   @override
   State<StatefulWidget> createState() {
     return _AuthPageState();
@@ -9,9 +17,7 @@ class NicknameEdit extends StatefulWidget {
 }
 
 class _AuthPageState extends State<NicknameEdit> {
-  String nickname = "";
-  String id = "";
-  String password = "";
+  String input_nickname = "";
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +113,7 @@ class _AuthPageState extends State<NicknameEdit> {
                       ),
                       onChanged: (text) {
                         setState(() {
-                          nickname = text;
+                          input_nickname = text;
                         });
                       },
                     ),
@@ -137,10 +143,23 @@ class _AuthPageState extends State<NicknameEdit> {
                                 color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
-                              onPressed: () {
+                              onPressed: () async {
+                                final url = Uri.parse("http://13.124.141.14:8080/user/update/${widget.idx}");
+
+                                Map data={"email": widget.id, "name": "d", "nickname": input_nickname, "password": widget.password};
+                                var body = json.encode(data);
+                                http.Response res = await http.put(
+                                    url,
+                                    headers: {"Content-Type": "application/json"},
+                                    body: body
+                                );
+                                print(res.body);
+                                print(widget.idx);
+
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => Profile(nickname, id, password, "1")));
+                                    
+                                    MaterialPageRoute(builder: (context) => Profile(input_nickname, widget.id, widget.password, widget.idx)));
                               },
                               icon: Icon(Icons.done),
                             ),

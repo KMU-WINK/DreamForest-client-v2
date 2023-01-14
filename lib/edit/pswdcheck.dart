@@ -2,9 +2,11 @@ import 'package:dreamforest/edit/pswdedit.dart';
 import 'package:flutter/material.dart';
 
 class PasswordCheck extends StatefulWidget {
-
+  String nickname;
+  String id;
   String password;
-  PasswordCheck(this.password);
+  String idx;
+  PasswordCheck(this.nickname, this.id, this.password, this.idx);
 
 
   @override
@@ -15,6 +17,38 @@ class PasswordCheck extends StatefulWidget {
 
 class _AuthPageState extends State<PasswordCheck> {
   String input_password = "";
+
+  void FlutterDialog() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "잘못된 비밀번호입니다.",
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text(
+                  "확인",
+                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +178,9 @@ class _AuthPageState extends State<PasswordCheck> {
                                 if (widget.password == input_password) {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => PasswordEdit(widget.password)));
+                                      MaterialPageRoute(builder: (context) => PasswordEdit(widget.nickname, widget.id, widget.password, widget.idx)));
+                                } else {
+                                  FlutterDialog();
                                 }
                               },
                               icon: Icon(Icons.arrow_forward),
