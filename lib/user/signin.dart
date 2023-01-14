@@ -50,6 +50,38 @@ class _AuthPageState extends State<SignInPage> {
         });
   }
 
+  void SigninDialog() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "입력이 올바르지 않습니다.",
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text(
+                  "확인",
+                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -225,18 +257,25 @@ class _AuthPageState extends State<SignInPage> {
                                   String idx = id_idx.substring(1, id_idx.indexOf(','));
                                   print(idx);
 
-                                  if (token != 'user not found!') {
-                                    print('맞음');
+
+                                  if (token == 'user not found!') {
+                                    print('틀림');
+                                    FlutterDialog();
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(builder: (context) => Profile(nickname, id, password, idx)));
-                                  } else {
-                                    FlutterDialog();
-                                    print("틀림");
+                                  } else if (id == "" || password == "") {
+                                    SigninDialog();
+                                    print("임너라");
+                                  }
+                                  else {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => Profile(nickname, id, password, idx)));
+                                    print("맞음");
                                   }
                                 } catch(e) {
                                   FlutterDialog();
-                                  print("fsfd");
                                 }
                               },
                               icon: Icon(Icons.arrow_forward),

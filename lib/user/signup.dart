@@ -251,7 +251,6 @@ class _AuthPageState extends State<SignUpPage> {
                             child: IconButton(
                               color: Colors.white,
                               onPressed: ()  async {
-
                                 try {
                                   final url = Uri.parse("http://13.124.141.14:8080/user/signup");
 
