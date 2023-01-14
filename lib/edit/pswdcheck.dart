@@ -8,7 +8,6 @@ class PasswordCheck extends StatefulWidget {
   String idx;
   PasswordCheck(this.nickname, this.id, this.password, this.idx);
 
-
   @override
   State<StatefulWidget> createState() {
     return _AuthPageState();
@@ -39,7 +38,9 @@ class _AuthPageState extends State<PasswordCheck> {
               TextButton(
                 child: Text(
                   "확인",
-                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 2, 171, 92),
+                  ),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -116,7 +117,7 @@ class _AuthPageState extends State<PasswordCheck> {
                     child: Text(
                       'Write Your Original Password.',
                       style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -129,7 +130,7 @@ class _AuthPageState extends State<PasswordCheck> {
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
                       obscureText: true,
                       keyboardType: TextInputType.emailAddress,
@@ -158,7 +159,8 @@ class _AuthPageState extends State<PasswordCheck> {
                           child: Container(
                             margin: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
+                                color: Color.fromARGB(255, 2, 171, 92),
+                                shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () {
@@ -172,14 +174,20 @@ class _AuthPageState extends State<PasswordCheck> {
                           child: Container(
                             margin: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
+                                color: Color.fromARGB(255, 2, 171, 92),
+                                shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () {
                                 if (widget.password == input_password) {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => PasswordEdit(widget.nickname, widget.id, widget.password, widget.idx)));
+                                      MaterialPageRoute(
+                                          builder: (context) => PasswordEdit(
+                                              widget.nickname,
+                                              widget.id,
+                                              widget.password,
+                                              widget.idx)));
                                 } else {
                                   FlutterDialog();
                                 }

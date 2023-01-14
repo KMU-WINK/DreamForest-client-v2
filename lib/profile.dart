@@ -13,7 +13,6 @@ class Profile extends StatefulWidget {
   String idx;
   Profile(this.nickname, this.id, this.password, this.idx);
 
-
   @override
   State<StatefulWidget> createState() {
     return _AuthPageState();
@@ -21,7 +20,6 @@ class Profile extends StatefulWidget {
 }
 
 class _AuthPageState extends State<Profile> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +93,7 @@ class _AuthPageState extends State<Profile> {
                     child: Text(
                       '${widget.id}',
                       style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -109,7 +107,6 @@ class _AuthPageState extends State<Profile> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -117,8 +114,8 @@ class _AuthPageState extends State<Profile> {
                         margin: EdgeInsets.only(left: 16, top: 8, right: 16),
                         child: Text(
                           '${widget.nickname}',
-                          style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
@@ -133,40 +130,72 @@ class _AuthPageState extends State<Profile> {
                   Row(
                     children: [
                       Icon(Icons.create),
-                      Padding(padding:
-                      EdgeInsets.fromLTRB(16, 8, 16, 8),
-                        child: TextButton(onPressed: (){
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => NicknameEdit(widget.nickname, widget.id, widget.password, widget.idx)));
-                        }, child: Text('Change Nickname',
-                          style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),)),),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NicknameEdit(
+                                          widget.nickname,
+                                          widget.id,
+                                          widget.password,
+                                          widget.idx)));
+                            },
+                            child: Text(
+                              'Change Nickname',
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 2, 171, 92),
+                              ),
+                            )),
+                      ),
                     ],
                   ),
                   Row(
                     children: [
                       Icon(Icons.lock),
-                      Padding(padding:
-                      EdgeInsets.fromLTRB(16, 8, 16, 8),
-                      child: TextButton(onPressed: (){
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => PasswordCheck(widget.nickname, widget.id, widget.password, widget.idx)));
-                      }, child: Text('Change Password',
-                            style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),)),),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PasswordCheck(
+                                          widget.nickname,
+                                          widget.id,
+                                          widget.password,
+                                          widget.idx)));
+                            },
+                            child: Text(
+                              'Change Password',
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 2, 171, 92),
+                              ),
+                            )),
+                      ),
                     ],
                   ),
                   Row(
                     children: [
                       Icon(Icons.logout),
-                      Padding(padding:
-                      EdgeInsets.fromLTRB(16, 8, 16, 8),
-                        child: TextButton(onPressed: (){
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => MainScreen()));
-                        }, child: Text('Logout',
-                              style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),)),),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MainScreen()));
+                            },
+                            child: Text(
+                              'Logout',
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 2, 171, 92),
+                              ),
+                            )),
+                      ),
                     ],
                   ),
                 ],

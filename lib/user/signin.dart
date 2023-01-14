@@ -12,7 +12,6 @@ class SignInPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<SignInPage> {
-
   String nickname = "";
   String id = "";
   String password = "";
@@ -39,7 +38,9 @@ class _AuthPageState extends State<SignInPage> {
               TextButton(
                 child: Text(
                   "확인",
-                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 2, 171, 92),
+                  ),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -71,7 +72,9 @@ class _AuthPageState extends State<SignInPage> {
               TextButton(
                 child: Text(
                   "확인",
-                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 2, 171, 92),
+                  ),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -148,7 +151,7 @@ class _AuthPageState extends State<SignInPage> {
                     child: Text(
                       'Welcome Back to DreamForest.',
                       style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -161,7 +164,7 @@ class _AuthPageState extends State<SignInPage> {
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
                       keyboardType: TextInputType.emailAddress,
                       style: TextStyle(fontSize: 18),
@@ -183,7 +186,7 @@ class _AuthPageState extends State<SignInPage> {
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
                       obscureText: true,
                       style: TextStyle(fontSize: 18),
@@ -212,7 +215,8 @@ class _AuthPageState extends State<SignInPage> {
                           child: Container(
                             margin: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
+                                color: Color.fromARGB(255, 2, 171, 92),
+                                shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () {
@@ -226,55 +230,64 @@ class _AuthPageState extends State<SignInPage> {
                           child: Container(
                             margin: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
+                                color: Color.fromARGB(255, 2, 171, 92),
+                                shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
-                              onPressed: ()  async {
-                                try{
-                                  final url = Uri.parse("http://13.124.141.14:8080/user/login");
+                              onPressed: () async {
+                                try {
+                                  final url = Uri.parse(
+                                      "http://13.124.141.14:8080/user/login");
 
-                                  Map data={"email": id, "password": password};
+                                  Map data = {
+                                    "email": id,
+                                    "password": password
+                                  };
                                   var body = json.encode(data);
-                                  http.Response res = await http.post(
-                                      url,
-                                      headers: {"Content-Type": "application/json"},
-                                      body: body
-                                  );
+                                  http.Response res = await http.post(url,
+                                      headers: {
+                                        "Content-Type": "application/json"
+                                      },
+                                      body: body);
                                   var token = res.body.split('"')[3];
                                   // print(token);
                                   // print(res.body.split('"'));
-                                  final url1 = Uri.parse("http://13.124.141.14:8080/user/info");
-                                  Map data1 = {"token":res.body.split('"')[3]};
+                                  final url1 = Uri.parse(
+                                      "http://13.124.141.14:8080/user/info");
+                                  Map data1 = {"token": res.body.split('"')[3]};
                                   var body1 = json.encode(data1);
-                                  http.Response res1 = await http.post(
-                                      url1,
-                                      headers: {"Content-Type": "application/json"},
-                                      body: body1
-                                  );
+                                  http.Response res1 = await http.post(url1,
+                                      headers: {
+                                        "Content-Type": "application/json"
+                                      },
+                                      body: body1);
                                   // print(res1.body.split('"'));
                                   nickname = res1.body.split('"')[13];
                                   String id_idx = res1.body.split('"')[2];
-                                  String idx = id_idx.substring(1, id_idx.indexOf(','));
+                                  String idx =
+                                      id_idx.substring(1, id_idx.indexOf(','));
                                   // print(idx);
-
 
                                   if (token == 'user not found!') {
                                     print('틀림');
                                     FlutterDialog();
                                     Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) => Profile(nickname, id, password, idx)));
+                                        MaterialPageRoute(
+                                            builder: (context) => Profile(
+                                                nickname, id, password, idx)));
                                   } else if (id == "" || password == "") {
                                     SigninDialog();
                                     // print("임너라");
-                                  }
-                                  else {
+                                  } else {
                                     Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) => Profile(nickname, id, password, idx)));
+                                        MaterialPageRoute(
+                                            builder: (context) => Profile(
+                                                nickname, id, password, idx)));
                                     // print("맞음");
                                   }
-                                } catch(e) {
+                                } catch (e) {
                                   if (id == "" || password == "") {
                                     SigninDialog();
                                     // print("임너라");

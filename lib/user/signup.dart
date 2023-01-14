@@ -14,7 +14,7 @@ class SignUpPage extends StatefulWidget {
 class _AuthPageState extends State<SignUpPage> {
   String nickname = "";
   String id = "";
-  String password ="";
+  String password = "";
 
   void CompleteDialog() {
     showDialog(
@@ -37,11 +37,12 @@ class _AuthPageState extends State<SignUpPage> {
               TextButton(
                 child: Text(
                   "확인",
-                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 2, 171, 92),
+                  ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                      context,
+                  Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MainScreen()));
                 },
               ),
@@ -71,7 +72,9 @@ class _AuthPageState extends State<SignUpPage> {
               TextButton(
                 child: Text(
                   "확인",
-                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 2, 171, 92),
+                  ),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -103,7 +106,9 @@ class _AuthPageState extends State<SignUpPage> {
               TextButton(
                 child: Text(
                   "확인",
-                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 2, 171, 92),
+                  ),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -180,7 +185,7 @@ class _AuthPageState extends State<SignUpPage> {
                     child: Text(
                       'Welcome to DreamForest.',
                       style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -216,7 +221,7 @@ class _AuthPageState extends State<SignUpPage> {
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
                       keyboardType: TextInputType.emailAddress,
                       style: TextStyle(fontSize: 18),
@@ -238,7 +243,7 @@ class _AuthPageState extends State<SignUpPage> {
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
                       obscureText: true,
                       style: TextStyle(fontSize: 18),
@@ -267,7 +272,8 @@ class _AuthPageState extends State<SignUpPage> {
                           child: Container(
                             margin: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
+                                color: Color.fromARGB(255, 2, 171, 92),
+                                shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () {
@@ -281,20 +287,27 @@ class _AuthPageState extends State<SignUpPage> {
                           child: Container(
                             margin: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
+                                color: Color.fromARGB(255, 2, 171, 92),
+                                shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
-                              onPressed: ()  async {
+                              onPressed: () async {
                                 try {
-                                  final url = Uri.parse("http://13.124.141.14:8080/user/signup");
+                                  final url = Uri.parse(
+                                      "http://13.124.141.14:8080/user/signup");
 
-                                  Map data={"email": id, "name": "d", "nickname": nickname, "password": password};
+                                  Map data = {
+                                    "email": id,
+                                    "name": "d",
+                                    "nickname": nickname,
+                                    "password": password
+                                  };
                                   var body = json.encode(data);
-                                  http.Response res = await http.post(
-                                      url,
-                                      headers: {"Content-Type": "application/json"},
-                                      body: body
-                                  );
+                                  http.Response res = await http.post(url,
+                                      headers: {
+                                        "Content-Type": "application/json"
+                                      },
+                                      body: body);
                                   // print(res.body);
                                   // print(res.body.split('"'));
                                   // var token = res.body.split('"')[3];
@@ -313,11 +326,12 @@ class _AuthPageState extends State<SignUpPage> {
                                   if (res.statusCode == 400) {
                                     FlutterDialog();
                                     // print("여기?");
-                                  } else if (id == "" || nickname == "" || password == "" ) {
+                                  } else if (id == "" ||
+                                      nickname == "" ||
+                                      password == "") {
                                     SignupDialog();
                                     // print("빈칸");
-                                  }
-                                  else {
+                                  } else {
                                     CompleteDialog();
                                     // print("성공");
                                     // Navigator.push(
@@ -327,10 +341,13 @@ class _AuthPageState extends State<SignUpPage> {
                                     //             nickname, id, password, idx)));
                                   }
                                 } catch (e) {
-                                  if (id == "" || nickname == "" || password == "") {
-                                      SignupDialog();
-                                      // print("asdf");
-                                  } else FlutterDialog();
+                                  if (id == "" ||
+                                      nickname == "" ||
+                                      password == "") {
+                                    SignupDialog();
+                                    // print("asdf");
+                                  } else
+                                    FlutterDialog();
                                 }
                               },
                               icon: Icon(Icons.done),

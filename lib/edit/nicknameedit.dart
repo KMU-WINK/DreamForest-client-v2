@@ -85,7 +85,7 @@ class _AuthPageState extends State<NicknameEdit> {
                     child: Text(
                       'Write Your New Nickname.',
                       style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -98,7 +98,7 @@ class _AuthPageState extends State<NicknameEdit> {
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
                       keyboardType: TextInputType.emailAddress,
                       style: TextStyle(fontSize: 18),
@@ -126,7 +126,8 @@ class _AuthPageState extends State<NicknameEdit> {
                           child: Container(
                             margin: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
+                                color: Color.fromARGB(255, 2, 171, 92),
+                                shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () {
@@ -140,26 +141,37 @@ class _AuthPageState extends State<NicknameEdit> {
                           child: Container(
                             margin: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
+                                color: Color.fromARGB(255, 2, 171, 92),
+                                shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () async {
-                                final url = Uri.parse("http://13.124.141.14:8080/user/update/${widget.idx}");
+                                final url = Uri.parse(
+                                    "http://13.124.141.14:8080/user/update/${widget.idx}");
 
-                                Map data={"email": widget.id, "name": "d", "nickname": input_nickname, "password": widget.password};
+                                Map data = {
+                                  "email": widget.id,
+                                  "name": "d",
+                                  "nickname": input_nickname,
+                                  "password": widget.password
+                                };
                                 var body = json.encode(data);
-                                http.Response res = await http.put(
-                                    url,
-                                    headers: {"Content-Type": "application/json"},
-                                    body: body
-                                );
+                                http.Response res = await http.put(url,
+                                    headers: {
+                                      "Content-Type": "application/json"
+                                    },
+                                    body: body);
                                 // print(res.body);
                                 // print(widget.idx);
 
                                 Navigator.push(
                                     context,
-                                    
-                                    MaterialPageRoute(builder: (context) => Profile(input_nickname, widget.id, widget.password, widget.idx)));
+                                    MaterialPageRoute(
+                                        builder: (context) => Profile(
+                                            input_nickname,
+                                            widget.id,
+                                            widget.password,
+                                            widget.idx)));
                               },
                               icon: Icon(Icons.done),
                             ),

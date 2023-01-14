@@ -42,7 +42,9 @@ class _AuthPageState extends State<PasswordEdit> {
               TextButton(
                 child: Text(
                   "확인",
-                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 2, 171, 92),
+                  ),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -119,7 +121,7 @@ class _AuthPageState extends State<PasswordEdit> {
                     child: Text(
                       'Write Your New Password.',
                       style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -132,7 +134,7 @@ class _AuthPageState extends State<PasswordEdit> {
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
                       obscureText: true,
                       keyboardType: TextInputType.emailAddress,
@@ -155,7 +157,7 @@ class _AuthPageState extends State<PasswordEdit> {
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
                       obscureText: true,
                       keyboardType: TextInputType.emailAddress,
@@ -184,7 +186,8 @@ class _AuthPageState extends State<PasswordEdit> {
                           child: Container(
                             margin: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
+                                color: Color.fromARGB(255, 2, 171, 92),
+                                shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () {
@@ -198,23 +201,35 @@ class _AuthPageState extends State<PasswordEdit> {
                           child: Container(
                             margin: EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 2, 171, 92), shape: BoxShape.circle),
+                                color: Color.fromARGB(255, 2, 171, 92),
+                                shape: BoxShape.circle),
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () async {
                                 if (input_password == confirm_password) {
-                                  final url = Uri.parse("http://13.124.141.14:8080/user/update/${widget.idx}");
+                                  final url = Uri.parse(
+                                      "http://13.124.141.14:8080/user/update/${widget.idx}");
 
-                                  Map data={"email": widget.id, "name": "d", "nickname": widget.nickname, "password": input_password};
+                                  Map data = {
+                                    "email": widget.id,
+                                    "name": "d",
+                                    "nickname": widget.nickname,
+                                    "password": input_password
+                                  };
                                   var body = json.encode(data);
-                                  http.Response res = await http.put(
-                                      url,
-                                      headers: {"Content-Type": "application/json"},
-                                      body: body
-                                  );
+                                  http.Response res = await http.put(url,
+                                      headers: {
+                                        "Content-Type": "application/json"
+                                      },
+                                      body: body);
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => Profile(widget.nickname, widget.id, input_password, widget.idx)));
+                                      MaterialPageRoute(
+                                          builder: (context) => Profile(
+                                              widget.nickname,
+                                              widget.id,
+                                              input_password,
+                                              widget.idx)));
                                 } else {
                                   FlutterDialog();
                                 }
