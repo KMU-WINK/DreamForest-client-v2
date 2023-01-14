@@ -29,9 +29,9 @@ class Store {
     factory Store.fromJson(Map<String, dynamic> json) => Store(
         id: json["id"],
         type: json["type"],
-        storeName: json["store_name"],
-        roadAddress: json["road_address"],
-        phoneNumber: json["phone_number"],
+        storeName: json["store_name"] == null ? 'null' : json["store_name"],
+        roadAddress: json["road_address"] == null ? 'null' : json["road_address"],
+        phoneNumber: json["phone_number"] == null ? 'null' : json["phone_number"],
         naverBizHour: json["naver_biz_hour"] == null ? 'null' : jsonDecode(json["naver_biz_hour"]),
         naverMenus: json["naver_menus"] == null ? 'null' : jsonDecode(json["naver_menus"]),
         naverMenuImages: json["naver_menu_images"] == null ? 'null' : jsonDecode(json["naver_menu_images"]),

@@ -91,7 +91,8 @@ class StoreDetail extends StatelessWidget {
                                       size: 18.0,
                                       color: Color.fromARGB(255, 2, 171, 92),
                                     )),
-                                    TextSpan(text: ' ${store.roadAddress}')
+                                    TextSpan(text: store.roadAddress == 'null' ? ' 매장 주소 정보가 없습니다.'
+                                    :' ${store.roadAddress}')
                                   ]),
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 16.0),
@@ -107,7 +108,7 @@ class StoreDetail extends StatelessWidget {
                                       size: 18.0,
                                       color: Color.fromARGB(255, 2, 171, 92),
                                     )),
-                                    TextSpan(text: store.naverBizHour == 'null' ? ' 이용시간 정보가 없습니다.'
+                                    TextSpan(text: store.naverBizHour == 'null' ? ' 매장 이용시간 정보가 없습니다.'
                                     : ' ${store.naverBizHour[0]['startTime']} ~ ${store.naverBizHour[0]['endTime']}')
                                   ]),
                                   style: const TextStyle(
@@ -124,7 +125,8 @@ class StoreDetail extends StatelessWidget {
                                       size: 18.0,
                                       color: Color.fromARGB(255, 2, 171, 92),
                                     )),
-                                    TextSpan(text: " ${store.phoneNumber}")
+                                    TextSpan(text: store.phoneNumber == 'null' ? ' 매장 연락처 정보가 없습니다.'
+                                    :" ${store.phoneNumber}")
                                   ]),
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 16.0),
@@ -235,13 +237,21 @@ class StoreDetail extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                     onPressed: () {
+                      menus = [];
                       addMenu(store.naverMenus);
                       print(menus.toString());
-                      menus = [];
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => MenuDetail()),
-                      // );
+                      if(menus != []){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MenuDetail(
+                            menus : menus
+                          )),
+                        );
+                      }
+                      else{
+                        
+                      }
+                      // menus = [];
                     },
                   ),
                 ),
