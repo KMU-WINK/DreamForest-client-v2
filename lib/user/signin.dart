@@ -1,8 +1,10 @@
+import 'package:dreamforest/main_map.dart';
 import 'package:dreamforest/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
+import 'package:dreamforest/main_page.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -283,8 +285,7 @@ class _AuthPageState extends State<SignInPage> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Profile(
-                                                nickname, id, password, idx)));
+                                            builder: (context) => NaverMap()));
                                     // print("맞음");
                                   }
                                 } catch (e) {
