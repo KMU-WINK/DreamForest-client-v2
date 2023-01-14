@@ -109,16 +109,22 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: ()async{
-                final storeId = "1610";
+                final storeId = "28885";
                 final url = Uri.parse("http://13.124.141.14:8080/store/detail/" + storeId);
+                final reviewUrl = Uri.parse("http://13.124.141.14:8080/review/" + storeId);
                 final response = await http.get(url);
-                if(response.statusCode==200){
-                  print(jsonDecode(utf8.decode(response.bodyBytes)));
+                final reviewRes = await http.get(reviewUrl);
+                if(response.statusCode==200 && reviewRes.statusCode == 200){
+                  //print(jsonDecode(utf8.decode(response.bodyBytes)));
+                  //print(jsonDecode(utf8.decode(reviewRes.bodyBytes))[0]['review_body']);
                   Store store = Store.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+                  List<dynamic> reviewList = jsonDecode(utf8.decode(reviewRes.bodyBytes));
+                  //print(jsonDecode(reviewList[2]['review_image']).length);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => StoreDetail(
                       store: store,
+                      reviewList: reviewList,
                     )),
                   );
                   // var info = response.body["id"]

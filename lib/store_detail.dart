@@ -1,28 +1,23 @@
+import 'package:dreamforest/review_detail.dart';
 import 'package:flutter/material.dart';
 import 'Store.dart';
 import 'menu_detail.dart';
 
 List<Menu> menus = [];
 
-void addMenu(List<dynamic> menuMap){
-    int i = 1;
-    menuMap.forEach((menuList) { 
-    menus.add(
-      Menu(
-        id: i,
-        name : menuList['name'],
-        price : menuList['price']
-      )
-    );
+void addMenu(List<dynamic> menuMap) {
+  int i = 1;
+  menuMap.forEach((menuList) {
+    menus.add(Menu(id: i, name: menuList['name'], price: menuList['price']));
     i++;
   });
 }
+
 class StoreDetail extends StatelessWidget {
   final Store store;
-  const StoreDetail({
-    Key? key,
-    required this.store,
-  }): super(key: key);
+  final List<dynamic> reviewList;
+  const StoreDetail({Key? key, required this.store, required this.reviewList})
+      : super(key: key);
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -30,10 +25,10 @@ class StoreDetail extends StatelessWidget {
           Container(
               foregroundDecoration: BoxDecoration(color: Colors.black26),
               height: 400,
-              child: Image.network(
-                store.naverMenuImages == 'null' ? 'https://media.istockphoto.com/id/1357365823/vector/default-image-icon-vector-missing-picture-page-for-website-design-or-mobile-app-no-photo.jpg?b=1&s=170667a&w=0&k=20&c=LEhQ7Gji4-gllQqp80hLpQsLHlHLw61DoiVf7XJsSx0='
-                            : store.naverMenuImages[0])),
-              //Image.asset('assets/images/food.png', fit: BoxFit.cover)),
+              child: Image.network(store.naverMenuImages == 'null'
+                  ? 'https://media.istockphoto.com/id/1357365823/vector/default-image-icon-vector-missing-picture-page-for-website-design-or-mobile-app-no-photo.jpg?b=1&s=170667a&w=0&k=20&c=LEhQ7Gji4-gllQqp80hLpQsLHlHLw61DoiVf7XJsSx0='
+                  : store.naverMenuImages[0])),
+          //Image.asset('assets/images/food.png', fit: BoxFit.cover)),
           SingleChildScrollView(
             padding: const EdgeInsets.only(top: 16.0, bottom: 20.0),
             child: Column(
@@ -59,7 +54,8 @@ class StoreDetail extends StatelessWidget {
                       ),
                       child: Text(
                         store.type,
-                        style: const TextStyle(color: Colors.white, fontSize: 16.0),
+                        style: const TextStyle(
+                            color: Colors.white, fontSize: 16.0),
                       ),
                     ),
                     Spacer(),
@@ -91,8 +87,10 @@ class StoreDetail extends StatelessWidget {
                                       size: 18.0,
                                       color: Color.fromARGB(255, 2, 171, 92),
                                     )),
-                                    TextSpan(text: store.roadAddress == 'null' ? ' 매장 주소 정보가 없습니다.'
-                                    :' ${store.roadAddress}')
+                                    TextSpan(
+                                        text: store.roadAddress == 'null'
+                                            ? ' 매장 주소 정보가 없습니다.'
+                                            : ' ${store.roadAddress}')
                                   ]),
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 16.0),
@@ -108,8 +106,10 @@ class StoreDetail extends StatelessWidget {
                                       size: 18.0,
                                       color: Color.fromARGB(255, 2, 171, 92),
                                     )),
-                                    TextSpan(text: store.naverBizHour == 'null' ? ' 매장 이용시간 정보가 없습니다.'
-                                    : ' ${store.naverBizHour[0]['startTime']} ~ ${store.naverBizHour[0]['endTime']}')
+                                    TextSpan(
+                                        text: store.naverBizHour == 'null'
+                                            ? ' 매장 이용시간 정보가 없습니다.'
+                                            : ' ${store.naverBizHour[0]['startTime']} ~ ${store.naverBizHour[0]['endTime']}')
                                   ]),
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 16.0),
@@ -125,8 +125,10 @@ class StoreDetail extends StatelessWidget {
                                       size: 18.0,
                                       color: Color.fromARGB(255, 2, 171, 92),
                                     )),
-                                    TextSpan(text: store.phoneNumber == 'null' ? ' 매장 연락처 정보가 없습니다.'
-                                    :" ${store.phoneNumber}")
+                                    TextSpan(
+                                        text: store.phoneNumber == 'null'
+                                            ? ' 매장 연락처 정보가 없습니다.'
+                                            : " ${store.phoneNumber}")
                                   ]),
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 16.0),
@@ -159,15 +161,19 @@ class StoreDetail extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(store.naverMenus == 'null' ? '메뉴가 없습니다.'
-                            : store.naverMenus[0]['name'],
+                          Text(
+                            store.naverMenus == 'null'
+                                ? '메뉴가 없습니다.'
+                                : store.naverMenus[0]['name'],
                             style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16.0,
                             ),
                           ),
-                          Text(store.naverMenus == 'null' ? '메뉴가 없습니다.'
-                            : store.naverMenus[0]['price'],
+                          Text(
+                            store.naverMenus == 'null'
+                                ? '메뉴가 없습니다.'
+                                : store.naverMenus[0]['price'],
                             style: const TextStyle(
                               color: Color.fromARGB(255, 2, 171, 92),
                               fontSize: 16.0,
@@ -175,20 +181,33 @@ class StoreDetail extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        height: 1.0,
+                        width: 500.0,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(store.naverMenus == 'null' ? '메뉴가 없습니다.'
-                            : store.naverMenus[1]['name'],
+                          Text(
+                            store.naverMenus == 'null'
+                                ? '메뉴가 없습니다.'
+                                : store.naverMenus[1]['name'],
                             style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16.0,
                             ),
                           ),
                           Text(
-                            store.naverMenus == 'null' ? '메뉴가 없습니다.'
-                            : store.naverMenus[1]['price'],
+                            store.naverMenus == 'null'
+                                ? '메뉴가 없습니다.'
+                                : store.naverMenus[1]['price'],
                             style: const TextStyle(
                               color: Color.fromARGB(255, 2, 171, 92),
                               fontSize: 16.0,
@@ -196,21 +215,33 @@ class StoreDetail extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        height: 1.0,
+                        width: 500.0,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            store.naverMenus == 'null' ? '메뉴가 없습니다.'
-                            : store.naverMenus[2]['name'],
+                            store.naverMenus == 'null'
+                                ? '메뉴가 없습니다.'
+                                : store.naverMenus[2]['name'],
                             style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16.0,
                             ),
                           ),
                           Text(
-                            store.naverMenus == 'null' ? '메뉴가 없습니다.'
-                            : store.naverMenus[2]['price'],
+                            store.naverMenus == 'null'
+                                ? '메뉴가 없습니다.'
+                                : store.naverMenus[2]['price'],
                             style: const TextStyle(
                               color: Color.fromARGB(255, 2, 171, 92),
                               fontSize: 16.0,
@@ -238,20 +269,17 @@ class StoreDetail extends StatelessWidget {
                     ),
                     onPressed: () {
                       menus = [];
-                      addMenu(store.naverMenus);
+                      if (store.naverMenus != 'null') {
+                        addMenu(store.naverMenus);
+                      }
                       print(menus.toString());
-                      if(menus != []){
+                      if (menus.isNotEmpty) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => MenuDetail(
-                            menus : menus
-                          )),
+                          MaterialPageRoute(
+                              builder: (context) => MenuDetail(menus: menus)),
                         );
                       }
-                      else{
-                        
-                      }
-                      // menus = [];
                     },
                   ),
                 ),
@@ -273,15 +301,29 @@ class StoreDetail extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        "고기가 맛있네요",
+                        reviewList.isEmpty
+                            ? '리뷰가 없습니다.'
+                            : reviewList[0]['review_body'],
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16.0,
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        height: 1.0,
+                        width: 500.0,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       Text(
-                        "사장님이 미쳤어요",
+                        reviewList.isEmpty
+                            ? '리뷰가 없습니다.'
+                            : reviewList[1]['review_body'],
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16.0,
@@ -293,20 +335,28 @@ class StoreDetail extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 2, 171, 92),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 16.0,
-                        horizontal: 32.0,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 2, 171, 92),
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 16.0,
+                          horizontal: 32.0,
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      "리뷰 더보기",
-                      style: TextStyle(fontWeight: FontWeight.normal),
-                    ),
-                    onPressed: () {},
-                  ),
+                      child: Text(
+                        "리뷰 더보기",
+                        style: TextStyle(fontWeight: FontWeight.normal),
+                      ),
+                      onPressed: () {
+                        if (reviewList.isNotEmpty) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ReviewDetail(reviewList: reviewList)),
+                          );
+                        }
+                      }),
                 ),
               ],
             ),

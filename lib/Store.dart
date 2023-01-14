@@ -60,6 +60,15 @@ class Menu {
   String toString() => '{$id, $name, $price}';
 }
 
+class Review {
+  final String? review, reviewImage;
+  Review({
+    this.review,
+    this.reviewImage,
+  });
+  String toString() => '{$review, $reviewImage}';
+}
+
 // List<Map<String, String>> menuMap = [
 //   {'name': '통새우와퍼주니어세트', 'price': '7,200원'},
 //   {'name': '통새우와퍼세트', 'price': '9,700원'},
