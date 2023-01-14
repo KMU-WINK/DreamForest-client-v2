@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dreamforest/mainscreen.dart';
 import 'package:dreamforest/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -15,10 +16,43 @@ class _AuthPageState extends State<SignUpPage> {
   String id = "";
   String password ="";
 
+  void CompleteDialog() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "회원가입에 성공했습니다.",
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text(
+                  "확인",
+                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MainScreen()));
+                },
+              ),
+            ],
+          );
+        });
+  }
+
   void FlutterDialog() {
     showDialog(
         context: context,
-        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
         barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
@@ -278,22 +312,28 @@ class _AuthPageState extends State<SignUpPage> {
                                   print(idx);
                                   if (res.statusCode == 400) {
                                     FlutterDialog();
-                                  } else {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(builder: (context) =>
-                                            Profile(
-                                                nickname, id, password, idx)));
+                                    print("여기?");
+                                  } else if (id == "" || nickname == "" || password == "" ) {
+                                    SignupDialog();
+                                    print("빈칸");
+                                  }
+                                  else {
+                                    CompleteDialog();
+                                    print("성공");
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(builder: (context) =>
+                                    //         Profile(
+                                    //             nickname, id, password, idx)));
                                   }
                                 } catch (e) {
                                   if (id == "" || nickname == "" || password == "") {
                                       SignupDialog();
                                       print("asdf");
-
                                   } else FlutterDialog();
                                 }
                               },
-                              icon: Icon(Icons.arrow_forward),
+                              icon: Icon(Icons.done),
                             ),
                           )),
                     ],
