@@ -8,7 +8,7 @@ class NicknameEdit extends StatefulWidget {
   String id = "";
   String password = "";
   String idx = "";
-  NicknameEdit(this.id, this.nickname, this.password, this.idx);
+  NicknameEdit(this.nickname, this.id, this.password, this.idx);
 
   @override
   State<StatefulWidget> createState() {

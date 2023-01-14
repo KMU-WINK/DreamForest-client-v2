@@ -100,7 +100,7 @@ class _AuthPageState extends State<SignUpPage> {
                       keyboardType: TextInputType.text,
                       textCapitalization: TextCapitalization.words,
                       decoration: InputDecoration(
-                        hintText: 'NickName',
+                        hintText: 'Nickname',
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
                             borderSide: BorderSide(color: Colors.grey)),
