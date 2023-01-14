@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dreamforest/Store.dart';
+import 'package:dreamforest/store_class.dart';
 
 class MenuDetail extends StatelessWidget {
   final List<Menu> menus;
@@ -69,7 +69,10 @@ class MenuDetail extends StatelessWidget {
                               height: 30,
                             ),
                             Text('${menus[index].price}',
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.red)),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: Colors.red)),
                           ],
                         ),
                       ],

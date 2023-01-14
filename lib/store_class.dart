@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'location_class.dart';
-import 'marker_class.dart';
+import 'package:dreamforest/location_class.dart';
+import 'package:dreamforest/marker_class.dart';
 
 Store? storeFromJson(String str) => Store.fromJson(json.decode(str));
 

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:dreamforest/store_detail.dart';
 import 'package:dreamforest/store_class.dart';
-import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
 class StoreInfoWidget extends StatelessWidget {
@@ -51,17 +50,24 @@ class StoreInfoWidget extends StatelessWidget {
             Text("주소:     ${this.store?.roadAddress}"),
             TextButton(
                 onPressed: () async {
+                  print(store.naverMenus);
                   // print(this.store?.id);
-                  // final url = Uri.parse(
-                  //     "http://13.124.141.14:8080/store/detail/${this.store.id}");
-                  // final response = await http.get(url);
-                  // Store tmp_store = Store.fromJson(
-                  //     jsonDecode(utf8.decode(response.bodyBytes)));
+                  final url = Uri.parse(
+                      "http://13.124.141.14:8080/review/${this.store.id}");
+                  final response = await http.get(url);
+                  List<dynamic> reviewList =
+                      jsonDecode(utf8.decode(response.bodyBytes));
+                  final url1 = Uri.parse(
+                      "http://13.124.141.14:8080/store/detail/${this.store.id}");
+                  final response1 = await http.get(url1);
+                  Store store1 = Store.fromJson(
+                      jsonDecode(utf8.decode(response1.bodyBytes)));
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => StoreDetail(
-                              store: store,
+                              store: store1,
+                              reviewList: reviewList,
                             )),
                   );
                 },

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dreamforest/store_class.dart';
 import 'package:dreamforest/review_detail.dart';
 import 'package:flutter/material.dart';
-import 'menu_detail.dart';
+import 'package:dreamforest/menu_detail.dart';
 
 List<Menu> menus = [];
 

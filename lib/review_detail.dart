@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:dreamforest/Store.dart';
+import 'package:dreamforest/store_class.dart';
 
 class ReviewDetail extends StatelessWidget {
   final List<dynamic> reviewList;
@@ -65,14 +65,14 @@ class ReviewDetail extends StatelessWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10.0),
                             child: Image.network(
-                              reviewList[index]['review_image'] == null
-                                  ? 'https://media.istockphoto.com/id/1357365823/vector/default-image-icon-vector-missing-picture-page-for-website-design-or-mobile-app-no-photo.jpg?b=1&s=170667a&w=0&k=20&c=LEhQ7Gji4-gllQqp80hLpQsLHlHLw61DoiVf7XJsSx0='
-                                  : jsonDecode(
-                                      reviewList[index]['review_image'])[0],
-                              width: 200,
-                              fit: BoxFit.cover),
+                                reviewList[index]['review_image'] == null
+                                    ? 'https://media.istockphoto.com/id/1357365823/vector/default-image-icon-vector-missing-picture-page-for-website-design-or-mobile-app-no-photo.jpg?b=1&s=170667a&w=0&k=20&c=LEhQ7Gji4-gllQqp80hLpQsLHlHLw61DoiVf7XJsSx0='
+                                    : jsonDecode(
+                                        reviewList[index]['review_image'])[0],
+                                width: 200,
+                                fit: BoxFit.cover),
                           ),
-                          
+
                           const SizedBox(
                             height: 24,
                           ),

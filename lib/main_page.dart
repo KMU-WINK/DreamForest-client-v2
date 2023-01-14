@@ -102,6 +102,7 @@ class _Main_PageState extends State<Main_Page> {
     for (int i = 0; i < store.length; i++) {
       // print(store[i]);
       Store tmpStore = Store.fromJson(store[i]);
+      print(tmpStore.naverMenus);
 
       // print(tmpStore.markerImage);
       setState(() {
