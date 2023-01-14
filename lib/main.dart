@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: ()async{
-                final storeId = "28885";
+                final storeId = "28915";
                 final url = Uri.parse("http://13.124.141.14:8080/store/detail/" + storeId);
                 final reviewUrl = Uri.parse("http://13.124.141.14:8080/review/" + storeId);
                 final response = await http.get(url);
