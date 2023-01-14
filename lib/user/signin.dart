@@ -192,12 +192,16 @@ class _AuthPageState extends State<SignInPage> {
                                     headers: {"Content-Type": "application/json"},
                                     body: body1
                                 );
-                                // print(res1.body.split('"'));
+                                print(res1.body.split('"'));
                                 nickname = res1.body.split('"')[13];
+                                String id_idx = res1.body.split('"')[2];
+                                String idx = id_idx.substring(1, id_idx.indexOf(','));
+                                print(idx);
+
                                 if (token != 'user not found!') {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => Profile(nickname, id, password, "1")));
+                                      MaterialPageRoute(builder: (context) => Profile(nickname, id, password, idx)));
                                 }
                               },
                               icon: Icon(Icons.arrow_forward),

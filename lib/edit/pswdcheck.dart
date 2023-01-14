@@ -2,9 +2,11 @@ import 'package:dreamforest/edit/pswdedit.dart';
 import 'package:flutter/material.dart';
 
 class PasswordCheck extends StatefulWidget {
-
+  String nickname;
+  String id;
   String password;
-  PasswordCheck(this.password);
+  String idx;
+  PasswordCheck(this.nickname, this.id, this.password, this.idx);
 
 
   @override
@@ -144,7 +146,7 @@ class _AuthPageState extends State<PasswordCheck> {
                                 if (widget.password == input_password) {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => PasswordEdit(widget.password)));
+                                      MaterialPageRoute(builder: (context) => PasswordEdit(widget.nickname, widget.id, widget.password, widget.idx)));
                                 }
                               },
                               icon: Icon(Icons.arrow_forward),

@@ -99,7 +99,7 @@ class _AuthPageState extends State<Profile> {
                         padding: const EdgeInsets.only(right: 16),
                         child: IconButton(onPressed: () {
                           Navigator.push((context),
-                              MaterialPageRoute(builder: (context) => NicknameEdit()));
+                              MaterialPageRoute(builder: (context) => NicknameEdit(widget.id, widget.nickname, widget.password, widget.idx)));
                         }, icon: Icon(Icons.create)),
                       )
                     ],
@@ -135,7 +135,7 @@ class _AuthPageState extends State<Profile> {
                       child: TextButton(onPressed: (){
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => PasswordCheck(widget.password)));
+                            MaterialPageRoute(builder: (context) => PasswordCheck(widget.nickname, widget.id, widget.password, widget.idx)));
                       }, child: Text('Change Password',
                             style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),)),),
                     ],
