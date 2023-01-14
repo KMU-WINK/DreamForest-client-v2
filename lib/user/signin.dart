@@ -24,16 +24,8 @@ class _AuthPageState extends State<SignInPage> {
         barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
-            // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
-            //Dialog Main Title
-            // title: Column(
-            //   children: <Widget>[
-            //     Text("Dialog Title"),
-            //   ],
-            // ),
-            //
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,

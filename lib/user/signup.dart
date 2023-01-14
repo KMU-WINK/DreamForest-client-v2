@@ -15,6 +15,39 @@ class _AuthPageState extends State<SignUpPage> {
   String id = "";
   String password ="";
 
+  void FlutterDialog() {
+    showDialog(
+        context: context,
+        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "이미 존재하는 회원입니다.",
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text(
+                  "확인",
+                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,34 +219,43 @@ class _AuthPageState extends State<SignUpPage> {
                             child: IconButton(
                               color: Colors.white,
                               onPressed: ()  async {
-                                // print(nickname);
-                                final url = Uri.parse("http://13.124.141.14:8080/user/signup");
+                                try {
+                                  final url = Uri.parse("http://13.124.141.14:8080/user/signup");
 
-                                Map data={"email": id, "name": "d", "nickname": nickname, "password": password};
-                                var body = json.encode(data);
-                                http.Response res = await http.post(
-                                    url,
-                                    headers: {"Content-Type": "application/json"},
-                                    body: body
-                                );
-                                // print(res.body);
-                                // print(res.body.split('"'));
-                                // var token = res.body.split('"')[3];
-                                // final url1 = Uri.parse("http://13.124.141.14:8080/user/info");
-                                // Map data1 = {"token":res.body.split('"')[3]};
-                                // var body1 = json.encode(data1);
-                                // http.Response res1 = await http.post(
-                                //     url1,
-                                //     headers: {"Content-Type": "application/json"},
-                                //     body: body1
-                                // );
-                                // print(res1.body.split('"'));
-                                var id_idx = res.body.split('"')[2];
-                                String idx = id_idx[1];
-                                print(idx);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => Profile(nickname, id, password, idx)));
+                                  Map data={"email": id, "name": "d", "nickname": nickname, "password": password};
+                                  var body = json.encode(data);
+                                  http.Response res = await http.post(
+                                      url,
+                                      headers: {"Content-Type": "application/json"},
+                                      body: body
+                                  );
+                                  // print(res.body);
+                                  // print(res.body.split('"'));
+                                  // var token = res.body.split('"')[3];
+                                  // final url1 = Uri.parse("http://13.124.141.14:8080/user/info");
+                                  // Map data1 = {"token":res.body.split('"')[3]};
+                                  // var body1 = json.encode(data1);
+                                  // http.Response res1 = await http.post(
+                                  //     url1,
+                                  //     headers: {"Content-Type": "application/json"},
+                                  //     body: body1
+                                  // );
+                                  // print(res1.body.split('"'));
+                                  var id_idx = res.body.split('"')[2];
+                                  String idx = id_idx[1];
+                                  print(idx);
+                                  if (res.statusCode == 400) {
+                                    FlutterDialog();
+                                  } else {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) =>
+                                            Profile(
+                                                nickname, id, password, idx)));
+                                  }
+                                } catch (e) {
+                                  FlutterDialog();
+                                }
                               },
                               icon: Icon(Icons.arrow_forward),
                             ),
