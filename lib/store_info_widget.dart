@@ -40,14 +40,25 @@ class StoreInfoWidget extends StatelessWidget {
                 topLeft: Radius.circular(50.0),
                 topRight: Radius.circular(50.0))),
         width: MediaQuery.of(context).size.width,
-        height: 200.0,
+        height: 250.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text("가계이름:  ${this.store?.storeName}"),
-            Text("업종:     ${this.store?.type}"),
-            Text("전화번호:  ${this.store?.phoneNumber}"),
-            Text("주소:     ${this.store?.roadAddress}"),
+            Text(
+              "가게 이름:  ${this.store?.storeName}",
+              style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 46, 85, 114)),
+            ),
+            Text(
+              "업종:  ${this.store?.type}",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            Text("전화번호:  ${this.store?.phoneNumber}",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+            Text("주소:  ${this.store?.roadAddress}",
+                style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
             TextButton(
                 onPressed: () async {
                   print(store.naverMenus);
@@ -71,8 +82,8 @@ class StoreInfoWidget extends StatelessWidget {
                             )),
                   );
                 },
-                child: Text('더보기',
-                    style: TextStyle(fontSize: 13, color: Colors.blue)))
+                child: Text('가게 자세히 보기',
+                    style: TextStyle(fontSize: 20, color: Colors.blue)))
           ],
         ),
       ),

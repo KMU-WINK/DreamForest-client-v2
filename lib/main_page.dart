@@ -8,6 +8,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
+import 'package:dreamforest/user_profile_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 List<Store> myStores = [];
 
@@ -38,6 +40,7 @@ class _Main_PageState extends State<Main_Page> {
   @override
   void initState() {
     getLocation();
+    UserInfoWidget();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // print(Main_Page.myMarkers());
@@ -102,7 +105,7 @@ class _Main_PageState extends State<Main_Page> {
     for (int i = 0; i < store.length; i++) {
       // print(store[i]);
       Store tmpStore = Store.fromJson(store[i]);
-      print(tmpStore.naverMenus);
+      // print(tmpStore.naverMenus);
 
       // print(tmpStore.markerImage);
       setState(() {
@@ -137,6 +140,7 @@ class _Main_PageState extends State<Main_Page> {
         this._showBottomSheet
             ? StoreInfoWidget(store: this._selectedStore)
             : Container(),
+        UserInfoWidget()
       ],
     ));
   }

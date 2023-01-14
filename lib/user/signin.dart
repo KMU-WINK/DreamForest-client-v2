@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 import 'package:dreamforest/main_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -254,6 +255,10 @@ class _AuthPageState extends State<SignInPage> {
                                   var token = res.body.split('"')[3];
                                   // print(token);
                                   // print(res.body.split('"'));
+                                  final prefs =
+                                      await SharedPreferences.getInstance();
+                                  prefs.setString('token', token);
+                                  prefs.setString('password', password);
                                   final url1 = Uri.parse(
                                       "http://13.124.141.14:8080/user/info");
                                   Map data1 = {"token": res.body.split('"')[3]};
@@ -271,13 +276,13 @@ class _AuthPageState extends State<SignInPage> {
                                   // print(idx);
 
                                   if (token == 'user not found!') {
-                                    print('틀림');
+                                    // print('틀림');
                                     FlutterDialog();
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Profile(
-                                                nickname, id, password, idx)));
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => Profile(
+                                    //             nickname, id, password, idx)));
                                   } else if (id == "" || password == "") {
                                     SigninDialog();
                                     // print("임너라");
