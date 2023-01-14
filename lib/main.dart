@@ -15,12 +15,11 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
     );
-      // title: 'Flutter Demo',
-      // theme: ThemeData(
-      //   primaryColor: Colors.white,
-      //   primarySwatch: Colors.blue,
-      //   visualDensity: VisualDensity.adaptivePlatformDensity,
-      // ),
+    // title: 'Flutter Demo',
+    // theme: ThemeData(
+    //   primaryColor: Colors.white,
+    //   primarySwatch: Colors.blue,
+    //   visualDensity: VisualDensity.adaptivePlatformDensity,
+    // ),
   }
 }
-
