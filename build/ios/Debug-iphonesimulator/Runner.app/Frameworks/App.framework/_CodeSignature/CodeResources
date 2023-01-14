@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		KFM/fpENTor7EHb6hXQPaa1knac=
+		yH4IxWN6nGeAcdzh+V/tBiLBL1M=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -18,11 +18,7 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		NQtsJKqk1+umoMiokUcdiCmrLE8=
-		</data>
-		<key>flutter_assets/assets/images/logo.jpeg</key>
-		<data>
-		B2nUL5QQKDZLIG9MvYGeRIl1tJg=
+		MCfWVl3tKbIRscjkSF7aoGrmXno=
 		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -34,15 +30,23 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		SvmXAUXtm0LjNb+vJBoNUKbzc2Q=
+		RKacAvNT18atCyAlodMnxiiciSU=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
 		P7bb/oR3EhwqCIH1M6LyTuBIWYU=
 		</data>
+		<key>flutter_assets/packages/naver_map/assets/markers/cafe.png</key>
+		<data>
+		EBHqFAD3saKWZeWs2cpt9Ncfpt0=
+		</data>
+		<key>flutter_assets/packages/naver_map/assets/markers/restaurant.png</key>
+		<data>
+		aiImNhNUCEPveeg4yc1cz1jj4GA=
+		</data>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>
 		<data>
-		icxVMBZ1HKBz1GtsxM3zAWZweuE=
+		GJnHDoJX9qtZpli/GHXknfBl/RE=
 		</data>
 		<key>flutter_assets/vm_snapshot_data</key>
 		<data>
@@ -55,7 +59,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			F3k1KgeCf8sBMYm4n+Ygk4JWHL9TYTU5Qicvq29HkB0=
+			2xgzmRclU11gAynDEL1OWAa3t5WEeXtlil9iIqNa3UQ=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -69,14 +73,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gcasVBmWDhJc4YXCbWHGUOgUgLth3TUS8dvJ71CKLAA=
-			</data>
-		</dict>
-		<key>flutter_assets/assets/images/logo.jpeg</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			VoU+r6FPJDjhNPMZcrkhErhp3pzZkehNsDL2Ix2Cixw=
+			jeiWPtikKCN8+glMzwg+JZAtUGl33JrgeiYKulCOJZ8=
 			</data>
 		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -97,7 +94,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qVjFE6gxa8Y4VdjocZESp8uKGPNwJB7yPlx8SHZzcpk=
+			iXAWPlw0+mtifY269EWhsXjzK5C/NVXFSoHj5Dzyq5A=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -107,11 +104,25 @@
 			x6NX+tjyECiQtyzbbjyY8U2zoZ7GDbJtE+T+k/dzgI0=
 			</data>
 		</dict>
+		<key>flutter_assets/packages/naver_map/assets/markers/cafe.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qGNa9GExB9hHtt7cBMExh+gAY3+5+1IQ5NpdoGVzTps=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/naver_map/assets/markers/restaurant.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			A/O2yjLBaV+5GegNs75ln62g9eW1AVxswo/vxBxN2MM=
+			</data>
+		</dict>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iEpNClr7Ix9h+m9CdXet3LTUzL0KqSA2RmZNNcyu15E=
+			gTHIiEjogG6Dv2ZGdERnkzHYNu/eFSpHGy/xrS6VJI4=
 			</data>
 		</dict>
 		<key>flutter_assets/vm_snapshot_data</key>
