@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
+options: "08a87233097d26c35bf121fabb0b806e45dccc7600e7472e71f492750f0df51a"
+build_start_time: [1672817484, 296723842]
+build_end_time: [1672817484, 318703174]
+inputs:
+  "/Users/seong/Documents/GitHub/DreamForest-client/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1672817476, 445750474]
+  "/Users/seong/Documents/GitHub/DreamForest-client/macos/Runner/AppDelegate.swift": !private [1672816871, 210621833]
+  "/Users/seong/Documents/GitHub/DreamForest-client/macos/Runner/MainFlutterWindow.swift": !private [1672816871, 214177608]
