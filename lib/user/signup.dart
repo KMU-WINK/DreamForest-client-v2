@@ -48,6 +48,38 @@ class _AuthPageState extends State<SignUpPage> {
         });
   }
 
+  void SignupDialog() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "입력이 올바르지 않습니다.",
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text(
+                  "확인",
+                  style: TextStyle(color: Color.fromARGB(255, 2, 171, 92),),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -219,6 +251,7 @@ class _AuthPageState extends State<SignUpPage> {
                             child: IconButton(
                               color: Colors.white,
                               onPressed: ()  async {
+
                                 try {
                                   final url = Uri.parse("http://13.124.141.14:8080/user/signup");
 
@@ -254,7 +287,11 @@ class _AuthPageState extends State<SignUpPage> {
                                                 nickname, id, password, idx)));
                                   }
                                 } catch (e) {
-                                  FlutterDialog();
+                                  if (id == "" || nickname == "" || password == "") {
+                                      SignupDialog();
+                                      print("asdf");
+
+                                  } else FlutterDialog();
                                 }
                               },
                               icon: Icon(Icons.arrow_forward),
